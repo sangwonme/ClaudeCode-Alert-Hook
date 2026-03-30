@@ -21,10 +21,9 @@ Claude Code runs in your terminal. You tab away, start reading docs, grab coffee
 
 ## Setup
 
-1. Copy `claudecodealert/` into your project's `.claude/hooks/` directory
-2. Ask Claude: 
+Ask Claude: 
 ```
-Read SETUP.md and install this hook for me.
+Setup this hook: https://github.com/sangwonme/ClaudeCode-Alert-Hook.git
 ```
 
 That's it. Claude handles the rest.
