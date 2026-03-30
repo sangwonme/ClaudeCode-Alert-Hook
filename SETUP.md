@@ -24,9 +24,9 @@ your-project/
       claudecodealert/
         scripts/
           alert.py
-          sound/
-            bell.mp3
-            noti.mp3
+        sounds/
+          bell.mp3
+          noti.mp3
         README.md
         SETUP.md
 ```

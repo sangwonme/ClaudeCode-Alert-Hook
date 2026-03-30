@@ -27,8 +27,9 @@ import tempfile
 # ---------------------------------------------------------------------------
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-BELL_PATH = os.path.join(SCRIPT_DIR, "sound", "bell.mp3")
-NOTI_PATH = os.path.join(SCRIPT_DIR, "sound", "noti.mp3")
+HOOK_DIR = os.path.dirname(SCRIPT_DIR)
+BELL_PATH = os.path.join(HOOK_DIR, "sounds", "bell.mp3")
+NOTI_PATH = os.path.join(HOOK_DIR, "sounds", "noti.mp3")
 DEBUG_PATH = os.path.join(SCRIPT_DIR, "alert_debug.json")
 
 VOICE = "en-GB-SoniaNeural"

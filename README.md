@@ -49,9 +49,9 @@ flowchart TD
 claudecodealert/
   scripts/
     alert.py              # Main script
-    sound/
-      bell.mp3            # Task completion chime
-      noti.mp3            # Permission request chime
+  sounds/
+    bell.mp3              # Task completion chime
+    noti.mp3              # Permission request chime
   README.md
   SETUP.md                # Setup guide (for you or Claude to follow)
 ```
