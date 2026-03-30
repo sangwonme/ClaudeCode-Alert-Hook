@@ -1,0 +1,10 @@
+{
+  "session_id": "a1753de4-0cbb-4773-922e-328bf51c5876",
+  "transcript_path": "/Users/sangwon/.claude/projects/-Users-sangwon-Desktop-Folder-Github-Repos-TaleTrain-Contingent/a1753de4-0cbb-4773-922e-328bf51c5876.jsonl",
+  "cwd": "/Users/sangwon/Desktop/Folder/Github-Repos/TaleTrain-Contingent",
+  "permission_mode": "acceptEdits",
+  "hook_event_name": "Stop",
+  "stop_hook_active": false,
+  "last_assistant_message": "Renamed `stopalert/` to `claudecodealert/` and updated all references in `settings.json`, `CLAUDE.md`, `README.md`, and `SETUP.md`.\n\n<!-- tts: {\"m\": \"Done. Renamed stopalert to claudecodealert across all files.\"} -->"
+}
+TTS_MESSAGE: Done. Renamed stopalert to claudecodealert across all files.
