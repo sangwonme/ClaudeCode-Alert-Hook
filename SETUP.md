@@ -15,20 +15,18 @@ pip install edge-tts
 
 ## 2. Copy files
 
-Copy the `claudecodealert/` folder into your project's `.claude/hooks/` directory:
+Copy the hook folder into your project's `.claude/hooks/` directory:
 
 ```
 your-project/
   .claude/
     hooks/
-      claudecodealert/
+      alert/
         scripts/
           alert.py
         sounds/
           bell.mp3
           noti.mp3
-        README.md
-        SETUP.md
 ```
 
 ## 3. Add hooks to settings.json
@@ -43,7 +41,7 @@ Open your project's `.claude/settings.json` (create it if it doesn't exist) and 
         "hooks": [
           {
             "type": "command",
-            "command": "REPO=$(git rev-parse --show-toplevel) && python \"$REPO/.claude/hooks/claudecodealert/scripts/alert.py\"",
+            "command": "REPO=$(git rev-parse --show-toplevel) && python \"$REPO/.claude/hooks/alert/scripts/alert.py\"",
             "timeout": 30
           }
         ]
@@ -54,7 +52,7 @@ Open your project's `.claude/settings.json` (create it if it doesn't exist) and 
         "hooks": [
           {
             "type": "command",
-            "command": "REPO=$(git rev-parse --show-toplevel) && python \"$REPO/.claude/hooks/claudecodealert/scripts/alert.py\" --message \"Permission needed.\" --sound noti",
+            "command": "REPO=$(git rev-parse --show-toplevel) && python \"$REPO/.claude/hooks/alert/scripts/alert.py\" --message \"Permission needed.\" --sound noti",
             "timeout": 15
           }
         ]
@@ -95,7 +93,7 @@ Start a new Claude Code session and send any message. You should hear:
 - **On response**: bell chime + spoken summary
 - **On permission request**: notification chime + "Permission needed."
 
-If you only hear the bell (no TTS), check `.claude/hooks/claudecodealert/scripts/alert_debug.json` for errors.
+If you only hear the bell (no TTS), check `.claude/hooks/alert/scripts/alert_debug.json` for errors.
 
 ## Troubleshooting
 

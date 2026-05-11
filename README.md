@@ -45,12 +45,13 @@ flowchart TD
 ## File Structure
 
 ```
-claudecodealert/
+ClaudeCode-Alert-Hook/
   scripts/
     alert.py              # Main script
   sounds/
     bell.mp3              # Task completion chime
     noti.mp3              # Permission request chime
+  requirements.txt        # Python dependencies
   README.md
   SETUP.md                # Setup guide (for you or Claude to follow)
 ```
