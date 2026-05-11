@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install edge-tts)",
+      "Bash(python -u .claude/hooks/alert/scripts/alert.py:*)",
+      "Bash(cd:*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -u \"$(git rev-parse --show-toplevel)/.claude/hooks/alert/scripts/alert.py\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -u \"$(git rev-parse --show-toplevel)/.claude/hooks/alert/scripts/alert.py\" --message \"Permission needed.\" --sound noti",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -46,11 +46,15 @@ flowchart TD
 
 ```
 ClaudeCode-Alert-Hook/
-  scripts/
-    alert.py              # Main script
-  sounds/
-    bell.mp3              # Task completion chime
-    noti.mp3              # Permission request chime
+  .claude/
+    hooks/
+      alert/
+        scripts/
+          alert.py        # Main script
+        sounds/
+          bell.mp3        # Task completion chime
+          noti.mp3        # Permission request chime
+    settings.local.json   # Hook registration & permissions
   requirements.txt        # Python dependencies
   README.md
   SETUP.md                # Setup guide (for you or Claude to follow)
@@ -68,13 +72,13 @@ ClaudeCode-Alert-Hook/
 | Symptom | Fix |
 |---|---|
 | No sound at all | Check that `python` is on PATH and `edge-tts` is installed: `python -c "import edge_tts"` |
-| Chime plays but no speech | Check `scripts/alert_debug.json` for `TTS_ERROR`. Usually a network issue. |
+| Chime plays but no speech | Check `.claude/hooks/alert/scripts/alert_debug.json` for `TTS_ERROR`. Usually a network issue. |
 | Generic "Task completed" | Claude didn't include the `<!-- tts: ... -->` tag. Check your `CLAUDE.md`. |
 | Hook timeout | Increase `"timeout"` in settings.json (default 30s). |
 
 ## Customization
 
-Edit the constants at the top of `alert.py`:
+Edit the constants at the top of `.claude/hooks/alert/scripts/alert.py`:
 
 ```python
 VOICE = "en-GB-SoniaNeural"   # Any edge-tts voice

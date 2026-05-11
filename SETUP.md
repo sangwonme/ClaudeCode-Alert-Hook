@@ -13,9 +13,9 @@ A Claude Code hook that plays notification sounds and TTS messages for Stop and 
 pip install edge-tts
 ```
 
-## 2. Copy files
+## 2. Copy `.claude/` into your project
 
-Copy the hook folder into your project's `.claude/hooks/` directory:
+This repo is structured so the `.claude/` folder can be merged directly into your project root:
 
 ```
 your-project/
@@ -27,44 +27,14 @@ your-project/
         sounds/
           bell.mp3
           noti.mp3
+    settings.local.json     # Hook registration included
 ```
 
-## 3. Add hooks to settings.json
+The `settings.local.json` already contains the hook commands and permissions — no manual JSON editing needed.
 
-Open your project's `.claude/settings.json` (create it if it doesn't exist) and add both hooks:
+> If `python` is not on your PATH, edit the `command` fields in `.claude/settings.local.json` to use the full path (e.g., `python3`, `/usr/bin/python3`).
 
-```json
-{
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "REPO=$(git rev-parse --show-toplevel) && python \"$REPO/.claude/hooks/alert/scripts/alert.py\"",
-            "timeout": 30
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "REPO=$(git rev-parse --show-toplevel) && python \"$REPO/.claude/hooks/alert/scripts/alert.py\" --message \"Permission needed.\" --sound noti",
-            "timeout": 15
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-> If `python` is not on your PATH, replace it with the full path to your Python binary (e.g., `python3`, `/usr/bin/python3`, `C:/Users/you/miniconda3/python.exe`).
-
-## 4. Add the TTS tag rule to CLAUDE.md
+## 3. Add the TTS tag rule to CLAUDE.md
 
 Add the following to your project's `CLAUDE.md` so Claude includes a spoken summary in every response:
 
@@ -87,7 +57,7 @@ Rules:
 - Even for simple Q&A or conversational replies, include the tag.
 ```
 
-## 5. Verify
+## 4. Verify
 
 Start a new Claude Code session and send any message. You should hear:
 - **On response**: bell chime + spoken summary
@@ -100,6 +70,6 @@ If you only hear the bell (no TTS), check `.claude/hooks/alert/scripts/alert_deb
 | Symptom | Fix |
 |---|---|
 | No sound at all | Verify `python` runs and `edge-tts` is installed: `python -c "import edge_tts"` |
-| Bell plays but no TTS | Check `alert_debug.json` for `TTS_ERROR`. Usually a network issue (edge-tts needs internet). |
+| Bell plays but no TTS | Check `.claude/hooks/alert/scripts/alert_debug.json` for `TTS_ERROR`. Usually a network issue. |
 | Generic "Task completed" instead of summary | Claude didn't include the `<!-- tts: ... -->` tag. Verify your CLAUDE.md has the TTS tag rule. |
-| Hook timeout | Increase `"timeout"` in settings.json (default 30s). |
+| Hook timeout | Increase `"timeout"` in `.claude/settings.local.json` (default 30s). |
